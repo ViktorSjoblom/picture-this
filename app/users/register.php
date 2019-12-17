@@ -2,30 +2,47 @@
 
 declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
-if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'])) {
+if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['password-repeat'])) {
 
-    $name = trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-    $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
-    $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
-    $password = trim(password_hash($_POST['password'], PASSWORD_DEFAULT));
+    if ($_POST['password'] !== $_POST['password-repeat']) {
+        $_SESSION['error'] = "Your passwords do not match, please try again!";
+        redirect('/register.php');
+    }
 
-    $statement = $pdo->prepare('SELECT email, username FROM users WHERE email = :email AND username = :username');
-    $statement->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement->bindParam(':username', $username, PDO::PARAM_STR);
-    $statement->execute();
+
+
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+    $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    if (emailExists($email, $pdo)) {
+        $_SESSION['error'] = "The email is already in use, please try again!";
+        redirect('/register.php');
+    }
+
+    if (userExists($username, $pdo)) {
+        $_SESSION['error'] = "That username is already in use, please try again!";
+        redirect('/register.php');
+    }
+
+    // if (!emailExists($email, $pdo) && (!userExists($username, $pdo))) {
+    //     redirect('/login.php');
+    //     $_SESSION['error'] = "You've created an new account! Please log in here!";
+    // }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO users (email, name, username, password)
+        VALUES (:email, :name, :username, :password)'
+    );
+
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 
-    $profilePicture = 'default-avatar.png';
-    $statement = $pdo->prepare('INSERT INTO users(name, email, username, password, profile_picture) VALUES(:name, :email, :username, :password, :profilePicture)');
-    $statement->bindParam(':name', $name, PDO::PARAM_STR);
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->bindParam(':name', $name, PDO::PARAM_STR);
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':password', $password, PDO::PARAM_STR);
-    $statement->bindParam(':profilePicture', $profilePicture, PDO::PARAM_STR);
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['message'] = 'You created an account! Please login in.';
-    redirect('/index.php');
-}
-redirect('/register.php');
+};
+redirect('/');

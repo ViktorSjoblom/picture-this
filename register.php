@@ -1,26 +1,53 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
+<section class="edit-section">
+    <h1 class="edit-headline">Register User</h1>
 
-<article>
-    <h1>Register new account</h1>
+    <form class="edit-form" role="form" action="app/users/register.php" method="post">
 
-    <form action="app/users/login.php" method="post">
-        <div class="form-group">
-
-            <label for="email">Name</label>
-            <input class="form-control" type="name" name="name" id="name" placeholder="Name" required>
-
-            <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
-
-            <label for="email">Username</label>
-            <input class="form-control" type="username" name="username" id="username" placeholder="Username" required>
-
-            <label for="email">Password</label>
-            <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+        <div class="edit-div">
+            <div class="edit-label">
+                <label for="name">Name</label>
+            </div>
+            <input class="edit-input" type="text" name="name" placeholder="Name" required>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-</article>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+        <div class="edit-div">
+            <div class="edit-label">
+                <label for="email">Email</label>
+            </div>
+            <input class="edit-input" type="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="edit-div">
+            <div class="edit-label">
+                <label for="username">Username</label>
+            </div>
+            <input class="edit-input" type="text" name="username" placeholder="Username" required>
+        </div>
+
+        <div class="edit-div">
+            <div class="edit-label">
+                <label for="password">Password</label>
+            </div>
+            <input class="edit-input" type="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="edit-div">
+            <div class="edit-label">
+                <label for="password-repeat">Repeat password</label>
+            </div>
+            <input class="edit-input" type="password" name="password-repeat" placeholder="Repeat password" required>
+        </div>
+
+        <button type="submit" class="edit-button">Register</button>
+
+        <?php if (isset($_SESSION['error'])) : ?>
+            <p><?php echo $_SESSION['error']; ?></p>
+            <?php unset($_SESSION['error']) ?>
+        <?php endif; ?>
+
+    </form>
+</section>
+
+<?php require __DIR__ . '/views/footer.php';
