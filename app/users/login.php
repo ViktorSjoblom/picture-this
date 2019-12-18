@@ -36,4 +36,4 @@ if (isset($_POST['email'], $_POST['password'])) {
 
 // We should put this redirect in the end of this file since we always want to
 // redirect the user back from this file. We don't know
-redirect('/');
+redirect('/profile.php');

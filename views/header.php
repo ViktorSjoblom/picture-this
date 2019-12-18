@@ -1,7 +1,4 @@
-<?php
-// Always start by loading the default application setup.
-require __DIR__ . '/../app/autoload.php';
-?>
+<?php require __DIR__ . '/../app/autoload.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +7,12 @@ require __DIR__ . '/../app/autoload.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title><?php echo $config['title']; ?></title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/navbar.css">
+    <link rel="stylesheet" href="/assets/styles/login.css">
 </head>
 
 <body>
-    <?php require __DIR__ . '/navigation.php'; ?>
 
-    <div class="container py-5">
+    <?php require __DIR__ . '/navigation.php'; ?>

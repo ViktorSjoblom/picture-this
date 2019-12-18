@@ -42,9 +42,9 @@
 
         <button type="submit" class="edit-button">Register</button>
 
-        <?php if (isset($_SESSION['error'])) : ?>
-            <p><?php echo $_SESSION['error']; ?></p>
-            <?php unset($_SESSION['error']) ?>
+        <?php if (isset($_SESSION['message'])) : ?>
+            <p><?php echo $_SESSION['message']; ?></p>
+            <?php unset($_SESSION['message']) ?>
         <?php endif; ?>
 
     </form>

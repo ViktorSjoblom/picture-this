@@ -36,10 +36,25 @@ function emailExists(string $email, object $pdo): array
  * @param  string   $username []
  * @return array     [Array of userdata]
  */
-function userExists(string $username, object $pdo): array
+function usernameExists(string $username, object $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Checks if user is logged in
+ *
+ * @param int $id
+ *
+ * @return bool
+ */
+function isLoggedIn(): bool
+{
+    return isset($_SESSION['user']);
+}
+if (isLoggedIn()) {
+    $user = $_SESSION['user'];
 }
