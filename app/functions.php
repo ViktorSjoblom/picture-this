@@ -58,3 +58,46 @@ function isLoggedIn(): bool
 if (isLoggedIn()) {
     $user = $_SESSION['user'];
 }
+
+
+/**
+ * Fetches all posts from a specific user, using ID
+ *
+ * @param int $id
+ *
+ * @param  object $pdo
+ *
+ * @return array
+ */
+function getPostsByUser(int $id, object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :user_id');
+    $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $posts;
+}
+
+/**
+ * Fetches the posts in the database
+ *
+ * @param object $pdo
+ *
+ * @return array
+ */
+function getPosts(object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT posts.id,
+                                posts.image,
+                                users.id as user_id,
+                                users.username,
+                                posts.description,
+                                posts.created_at,
+                                posts.updated_at
+                                FROM posts JOIN users
+                                ON posts.user_id = users.id
+                                ORDER BY created_at DESC');
+    $statement->execute();
+    $allPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $allPosts;
+}

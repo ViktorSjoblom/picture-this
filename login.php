@@ -19,7 +19,6 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
-    <p>Don't have an account? Sign up <a class="sign-up">here!</a></p>
 
 </article>
 

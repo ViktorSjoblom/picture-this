@@ -21,3 +21,7 @@
 .nav-item {
   margin-right: 1rem;
 }
+
+.navbar-logo {
+  width: 5rem;
+}
