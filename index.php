@@ -6,15 +6,17 @@
         <h1><?php echo $config['title']; ?></h1>
     </div>
 
-    <p><a href="login.php">Log in</a></p>
-    <p><a href="register.php">Register</a></p>
 
+    <?php if (!isLoggedIn()) : ?>
+        <p><a href="login.php">Log in</a></p>
+        <p><a href="register.php">Register</a></p>
+    <?php endif; ?>
 
 
     <?php $allPosts = getPosts($pdo); ?>
     <?php foreach ($allPosts as $posts) : ?>
         <article class="feed-post">
-            <img src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
+            <img class="uploaded-pictures" src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
             <div data-id="<?= $post['id'] ?>" class="like">
                 <p class="post-date">
                     <?php $date = explode(" ", $posts['created_at']); ?>

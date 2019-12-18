@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/assets/styles/navbar.css">
     <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
+    <link rel="stylesheet" href="/assets/styles/posts.css">
 </head>
 
 <body>

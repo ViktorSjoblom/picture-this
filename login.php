@@ -19,6 +19,7 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
+    <p>Don't have an account? Create one <a href="/register.php">here!</a></p>
 
 </article>
 
