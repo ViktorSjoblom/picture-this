@@ -7,7 +7,7 @@ require __DIR__ . '/../autoload.php';
 if (isLoggedIn() && isset($_POST['delete-account'])) {
     $id = (int) $user['id'];
 
-    if ($user[''] !== 'default-.png') {
+    if ($user[''] !== 'default-profilepicture.png') {
         unlink(__DIR__ . '//' . $user['']);
     }
     $posts = getPostsByUser($id, $pdo);

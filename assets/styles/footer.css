@@ -1,0 +1,19 @@
+.footer-container {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  border-top: 3px solid black;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer-link {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.footer-link:hover {
+  color: hotpink;
+}

@@ -1,0 +1,10 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group textarea {
+  width: 300px;
+  height: 200px;
+  resize: none;
+}

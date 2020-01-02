@@ -17,7 +17,7 @@ if (isLoggedIn() && isset($_POST['confirm-password'])) {
             $biography = trim(filter_var($_POST['biography'], FILTER_SANITIZE_STRING));
             $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
             $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
-            $statement->bindParam(':id', $id, PDO::PARAM_STR);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
             $_SESSION['user']['biography'] = $biography;
         }

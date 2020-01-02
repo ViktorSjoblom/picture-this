@@ -33,7 +33,7 @@ if (isLoggedIn() && isset($_FILES['profilepicture'])) {
         move_uploaded_file($profilepicture['tmp_name'], $filePath . $profilepictureName);
     }
     // Updates session variable to use the newly set image as profilepicture
-    $_SESSION['message'] = 'Your new profilepicture has been uploaded!';
+    $_SESSION['message'] = 'Your new profile picture has been uploaded!';
     $_SESSION['user']['profilepicture'] = $profilepictureName;
     redirect('/../profile.php');
 } else {

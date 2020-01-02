@@ -26,17 +26,18 @@ if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'
         redirect('/register.php');
     }
 
-    // if (!emailExists($email, $pdo) && (!userExists($username, $pdo))) {
-    //     redirect('/login.php');
-    //     $_SESSION['message'] = "You've created an new account! Please log in here!";
-    // }
+    if (!emailExists($email, $pdo) && (!usernameExists($username, $pdo))) {
+        redirect('/login.php');
+        $_SESSION['message'] = "You've created an new account! Please log in here!";
+    }
 
     $profilepicture = 'default-profilepicture.png';
+    $defaultBio = 'Nothing here yet...';
 
 
     $statement = $pdo->prepare(
-        'INSERT INTO users (email, name, username, password, profilepicture)
-        VALUES (:email, :name, :username, :password, :profilepicture)'
+        'INSERT INTO users (email, name, username, password, profilepicture, biography)
+        VALUES (:email, :name, :username, :password, :profilepicture, :biography)'
     );
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -47,6 +48,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':password', $password, PDO::PARAM_STR);
     $statement->bindParam(':profilepicture', $profilepicture, PDO::PARAM_STR);
+    $statement->bindParam(':biography', $defaultBio, PDO::PARAM_STR);
     $statement->execute();
 
     redirect('/index.php');

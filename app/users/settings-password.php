@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-//Checks if password is set
+// Checks if password is set
 if (isLoggedIn() && isset($_POST['current-password'], $_POST['new-password'], $_POST['repeat-new-password'])) {
     $currentPassword = trim($_POST['current-password']);
     $newPassword = trim($_POST['new-password']);

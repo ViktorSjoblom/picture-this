@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/posts.css">
+    <link rel="stylesheet" href="/assets/styles/footer.css">
+    <link rel="stylesheet" href="/assets/styles/upload.css">
+    <link rel="stylesheet" href="/assets/styles/settings.css">
 </head>
 
 <body>

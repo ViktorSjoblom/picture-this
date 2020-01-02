@@ -1,16 +1,17 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
-    <div class="index-intro">
-        <img src="logo.jpeg" alt="">
-        <h1><?php echo $config['title']; ?></h1>
+    <div class="login-container">
+        <div class="index-intro">
+            <img src="logo.png" alt="">
+        </div>
+
+
+        <?php if (!isLoggedIn()) : ?>
+            <p class="login-register"><a href="login.php">Log in</a></p>
+            <p class="login-register"><a href="register.php">Register</a></p>
+        <?php endif; ?>
     </div>
-
-
-    <?php if (!isLoggedIn()) : ?>
-        <p><a href="login.php">Log in</a></p>
-        <p><a href="register.php">Register</a></p>
-    <?php endif; ?>
 
 
     <?php $allPosts = getPosts($pdo); ?>

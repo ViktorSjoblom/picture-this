@@ -3,12 +3,13 @@
 <?php if (isLoggedIn()) : ?>
 
     <footer>
-        <div class="footer">
+        <div class="footer-container">
             <a class="footer-link" href="/index.php">Index</a>
             <a class="footer-link" href="/upload.php">Upload</a>
             <a class="footer-link" href="./profile.php">Profile</a>
         </div>
     </footer>
+
 <?php endif; ?>
 
 

@@ -9,7 +9,7 @@ require __DIR__ . '/views/header.php';
 
     <?php require __DIR__ . '/views/message.php'; ?>
 
-    <div class="upload">
+    <div class="upload-container">
         <form class="upload-post-group" action="/app/posts/store.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="image">Choose an image to upload</label>
