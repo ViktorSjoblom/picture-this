@@ -16,17 +16,17 @@
 
     <?php $allPosts = getPosts($pdo); ?>
     <?php foreach ($allPosts as $posts) : ?>
-        <article class="feed-post">
-            <img class="uploaded-pictures" src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
-            <div data-id="<?= $post['id'] ?>" class="like">
-                <p class="post-date">
-                    <?php $date = explode(" ", $posts['created_at']); ?>
-                    <?php echo $date[0]; ?></p>
-                <div class="description">
-                    <p class="username-post"><?= $posts['username']; ?></p>
-                    <p><?= $posts['description'] ?></p>
-                </div>
-            <?php endforeach; ?>
+        <article class="index-posts">
+            <div data-id="<?= $post['id'] ?>" class="like">Like</div>
+            <p class="username-post">Posted by: <?= $posts['username']; ?></p>
+            <p class="post-date">Date:
+                <?php $date = explode(" ", $posts['created_at']); ?>
+                <?php echo $date[0]; ?></p>
+            <div class="description">
+                <img class="uploaded-pictures" src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
+                <p><?= $posts['description'] ?></p>
+            </div>
+        <?php endforeach; ?>
 
         </article>
 

@@ -4,23 +4,36 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-$postId = $_POST['post_id'];
-$updateDescription = trim(filter_var($_POST['update-description'], FILTER_SANITIZE_STRING));
-$userId = (int) $_SESSION['user']['id'];
+if (isset($_POST['description'], $_POST['id'])) {
+    $post_id = $_POST['id'];
+    $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
+    $user_id = (int) $_SESSION['user']['id'];
+    $userFolder = $user_id;
+    $userPosts = getPostsByUser($user_id, $pdo);
+    $redirect = $_POST['page'];
 
-$dateAndTime = date('Y-m-d H:i:s');
+    foreach ($userPosts as $userPost) {
+        if (filter_var($description, FILTER_SANITIZE_STRING)) {
+            $statement = $pdo->prepare("UPDATE posts SET description = :description WHERE id = :id");
 
-$statement = $pdo->prepare('UPDATE posts SET description = :description, updated_at = :updated_at WHERE id = :id');
+            if (!$statement) {
+                die(var_dump($pdo->errorInfo()));
+            }
 
-if (!$statement) {
-    die(var_dump($pdo->errorInfo()));
+            $statement->bindParam(':description', $description, PDO::PARAM_STR);
+            $statement->bindParam(':id', $post_id, PDO::PARAM_INT);
+
+            $statement->execute();
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION['message'] = 'Your changes has been updated!';
+
+            redirect($redirect);
+        }
+
+        die;
+    }
 }
 
-$statement->bindParam(':description', $updateDescription, PDO::PARAM_STR);
-$statement->bindParam(':updated_at', $dateAndTime, PDO::PARAM_STR);
-$statement->bindParam(':id', $postId, PDO::PARAM_INT);
 
-$statement->execute();
-
-$_SESSION['message'] = 'Your changes has been updated';
-redirect('/profile.php');
+redirect('/');

@@ -23,7 +23,7 @@
     </div>
 
     <div class="edit-profile">
-        <a href="app/users/settings.php">Edit my profile</a>
+        <a href="app/users/settings.php">Edit profile</a>
     </div>
 
 
@@ -32,28 +32,30 @@
         $usersPosts = getPostsByUser($id, $pdo);
     ?>
         <?php foreach ($usersPosts as $posts) : ?>
-            <div class="profile-posts">
 
+            <div class="profile-posts">
                 <form action="./../app/posts/delete.php" method="get" enctype="multipart/form-data" class="delete-form">
-                    <input type="hidden" name="page" value="<?= '/profile.php'; ?>">
-                    <button type="submit" name="delete" value="<?= $posts['id']; ?>">Delete post</button>
+                    <input type="hidden" name="page" value="<?php echo '/profile.php'; ?>">
+                    <button type="submit" name="delete" value="<?php echo $posts['id']; ?>">Delete post</button>
+                </form>
+
+                <form action="./../app/posts/update.php" method="post" enctype="multipart/form-data" class="description-form">
+                    <label for="description">Change description</label>
+                    <input type="text" name="description" placeholder="<?php echo $posts['description']; ?>" value="<?php echo $posts['description']; ?>">
+                    <input type="hidden" name="page" value="<?php echo '/profile.php'; ?>">
+                    <button type="submit" name="id" value="<?php echo $posts['id']; ?>">Update</button>
                 </form>
 
 
-                <article class="feed-post">
-                    <img class="uploaded-pictures" src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
-                    <div data-id="<?= $post['id'] ?>" class="like">
-                        <p class="post-date">
-                            <?php $date = explode(" ", $posts['created_at']); ?>
-                            <?php echo $date[0]; ?></p>
-                        <div class="description">
-                            <p><?= $posts['description'] ?></p>
-                        </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-                    </div>
-                </article>
+                <img class="uploaded-pictures" src="<?php echo 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
+                <p class="post-date">
+                    <?php $date = explode(" ", $posts['created_at']); ?>
+                    <?php echo $date[0]; ?></p>
+                <div class="description">
+                    <p><?php echo $posts['description'] ?></p>
+                </div>
             </div>
-
+        <?php endforeach; ?>
+    <?php endif; ?>
 </section>
 <?php require __DIR__ . '/views/footer.php'; ?>

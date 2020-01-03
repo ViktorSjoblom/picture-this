@@ -42,7 +42,7 @@
 
         <button type="submit" class="edit-button">Register</button>
 
-        <p>Already have an account? Log in <a href="/login.php">here!</a></p>
+        <p>Already have an account? Log in <a class="create-account-here" href="/login.php">here!</a></p>
 
         <?php if (isset($_SESSION['message'])) : ?>
             <p><?php echo $_SESSION['message']; ?></p>

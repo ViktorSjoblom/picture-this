@@ -24,3 +24,19 @@
   max-width: 250px;
   border-radius: 50%;
 }
+
+.description-form [type="text"] {
+  width: 100px;
+  text-align: center;
+  opacity: 65%;
+}
+
+.profile-posts {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.profile-posts img {
+  width: 33%;
+}

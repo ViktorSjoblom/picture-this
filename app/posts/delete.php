@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// In this file we delete new posts in the database.
+// In this file we delete posts in the database.
 
 if (isset($_GET['delete'])) {
     $post_id = $_GET['delete'];
@@ -28,10 +28,10 @@ if (isset($_GET['delete'])) {
             $statement->execute();
             $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-            // delete the file from the filesytem
-            unlink(__DIR__ . '/uploaded/' . $userFolder . '/' . $imageName . '');
+            // This deletes the pictures from the database
+            unlink(__DIR__ . '/uploads/' . $userFolder . '/' . $imageName . '');
 
-            $_SESSION['message'] = 'Your post has been deleted';
+            $_SESSION['message'] = 'Your post has been deleted!';
             redirect($redirect);
         }
     }
