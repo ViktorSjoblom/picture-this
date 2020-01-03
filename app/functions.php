@@ -94,3 +94,46 @@ function getPosts(object $pdo): array
     $allPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $allPosts;
 }
+
+
+/**
+ * Checks if given post is liked by given user
+ *
+ * @param int $postId
+ *
+ * @param int $userId
+ *
+ * @param object $pdo
+ *
+ * @return bool
+ */
+function isLikedByUser(int $postId, int $userId, object $pdo): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM likes
+                                WHERE post_id = :post_id
+                                AND user_id = :user_id');
+    $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $statement->execute();
+    $isLikedByUser = $statement->fetch(PDO::FETCH_ASSOC);
+    return $isLikedByUser ? true : false;
+}
+
+/**
+ * Get and count likes for a given post
+ *
+ * @param int $postId
+ *
+ * @param object $pdo
+ *
+ * @return string
+ */
+function countLikes(int $postId, object $pdo): string
+{
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM likes
+                                WHERE post_id = :post_id');
+    $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $statement->execute();
+    $likes = $statement->fetch(PDO::FETCH_ASSOC);
+    return $likes["COUNT(*)"];
+}

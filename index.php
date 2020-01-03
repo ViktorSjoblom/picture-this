@@ -12,12 +12,27 @@
             <p class="login-register"><a href="register.php">Register</a></p>
         <?php endif; ?>
     </div>
-
-
     <?php $allPosts = getPosts($pdo); ?>
     <?php foreach ($allPosts as $posts) : ?>
+
+        <?php $isLikedByUser = isLikedByUser($posts['id'], $_SESSION['user']['id'], $pdo); ?>
+        <?php $likes = countLikes($posts['id'], $pdo); ?>
+
+
         <article class="index-posts">
-            <div data-id="<?= $post['id'] ?>" class="like">Like</div>
+
+            <div data-id="<?= $posts['id'] ?>" class="like">
+                <p class="post-likes likes-post<?= $posts['id']; ?>"><?= $likes ?></p>
+                <form class="like-form" method="post">
+                    <input type="hidden" name="post_id" value="<?= $posts['id']; ?>">
+                    <input type="hidden" name="action" value="<?= $isLikedByUser ? 'unlike' : 'like'; ?>">
+                    <button data-id="<?= $posts['id'] ?>" class="like-button" type="submit" name="like">Like
+                        <i class="far fa-heart like-button-<?= $posts['id'] ?> like-button-heart <?= $isLikedByUser ? 'hidden' : '' ?>"></i>
+                        <i class="fas fa-heart like-button-<?= $posts['id'] ?> like-button-heart liked <?= $isLikedByUser ? '' : 'hidden' ?>"></i>
+                    </button> <!-- like-button -->
+                </form> <!-- like-form -->
+            </div> <!-- like -->
+
             <p class="username-post">Posted by: <?= $posts['username']; ?></p>
             <p class="post-date">Date:
                 <?php $date = explode(" ", $posts['created_at']); ?>

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/assets/styles/footer.css">
     <link rel="stylesheet" href="/assets/styles/upload.css">
     <link rel="stylesheet" href="/assets/styles/settings.css">
+    <link rel="stylesheet" href="/assets/styles/index.css">
 </head>
 
 <body>
