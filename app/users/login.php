@@ -16,8 +16,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     // Fetch the user as an associative array.
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    // If we couldn't find the user in the database, redirect back to the login
-    // page with our custom redirect function.
+    // If we couldn't find the user in the database, redirect back to the login page.
     if (!$user) {
         redirect('/login.php');
     }
@@ -27,13 +26,10 @@ if (isset($_POST['email'], $_POST['password'])) {
     if (password_verify($_POST['password'], $user['password'])) {
         // If the password was valid we know that the user exists and provided
         // the correct password. We can now save the user in our session.
-        // Remember to not save the password in the session!
         unset($user['password']);
 
         $_SESSION['user'] = $user;
     }
 }
 
-// We should put this redirect in the end of this file since we always want to
-// redirect the user back from this file. We don't know
-redirect('/profile.php');
+redirect('/index.php');

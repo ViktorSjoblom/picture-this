@@ -10,14 +10,15 @@
         <?php if (!isLoggedIn()) : ?>
             <p class="login-register"><a href="login.php">Log in</a></p>
             <p class="login-register"><a href="register.php">Register</a></p>
-        <?php endif; ?>
     </div>
+<?php endif; ?>
+
+<?php if (isLoggedIn()) : ?>
     <?php $allPosts = getPosts($pdo); ?>
     <?php foreach ($allPosts as $posts) : ?>
 
         <?php $isLikedByUser = isLikedByUser($posts['id'], $_SESSION['user']['id'], $pdo); ?>
         <?php $likes = countLikes($posts['id'], $pdo); ?>
-
 
         <article class="index-posts">
 
@@ -45,6 +46,7 @@
 
         </article>
 
+    <?php endif; ?>
 
 
-        <?php require __DIR__ . '/views/footer.php'; ?>
+    <?php require __DIR__ . '/views/footer.php'; ?>

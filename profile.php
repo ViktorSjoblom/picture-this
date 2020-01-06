@@ -1,36 +1,32 @@
 <?php require __DIR__ . '/views/header.php'; ?>
+<?php if (isLoggedIn()) : ?>
 
-<section class="profile-userpage">
+    <?php $id = (int) $_SESSION['user']['id']; ?>
+    <?php $usersPosts = getPostsByUser($id, $pdo); ?>
 
     <?php require __DIR__ . '/views/message.php'; ?>
+    <section class="">
+        <div class="profile-userpage">
+            <div class="profile-user">
+                <?php echo $_SESSION['user']['username']; ?>
+            </div>
 
-    <div class="profile-user">
-        <?php if (isLoggedIn()) : ?>
-            <?php echo $_SESSION['user']['username']; ?>
-        <?php endif; ?>
-    </div>
+            <div class="profile-profilepicture">
+                <img src="<?= '/app/users/profilepicture/' . $_SESSION['user']['profilepicture'] ?>" alt="">
+            </div>
 
-    <div class="profile-profilepicture">
-        <?php if (isLoggedIn()) : ?>
-            <img src="<?= '/app/users/profilepicture/' . $_SESSION['user']['profilepicture'] ?>" alt="">
-        <?php endif; ?>
-    </div>
+            <div class="profile-biography">
+                <?php echo $_SESSION['user']['biography']; ?>
+            </div>
 
-    <div class="profile-biography">
-        <?php if (isLoggedIn()) {
-            echo $_SESSION['user']['biography'];
-        } ?>
-    </div>
+        </div>
 
-    <div class="edit-profile">
-        <a href="app/users/settings.php">Edit profile</a>
-    </div>
+        <div class="edit-center">
+            <div class="edit-profile">
+                <a href="app/users/settings.php">Edit profile</a>
+            </div>
+        </div>
 
-
-    <?php if (isLoggedIn()) :
-        $id = (int) $_SESSION['user']['id'];
-        $usersPosts = getPostsByUser($id, $pdo);
-    ?>
         <?php foreach ($usersPosts as $posts) : ?>
 
             <div class="profile-posts">
@@ -57,5 +53,5 @@
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-</section>
-<?php require __DIR__ . '/views/footer.php'; ?>
+    </section>
+    <?php require __DIR__ . '/views/footer.php'; ?>

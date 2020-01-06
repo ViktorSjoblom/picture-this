@@ -1,8 +1,9 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <div class="settings-container">
-    <a href="/profile.php">Profile</a>
 
-
+    <div class="profile-profilepicture">
+        <img src="<?= '/app/users/profilepicture/' . $_SESSION['user']['profilepicture'] ?>" alt="">
+    </div>
     <form class="profilepicture-group" action="/app/users/profilepicture.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="profilepicture">Choose an profile picture to upload</label>
