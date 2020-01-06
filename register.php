@@ -42,10 +42,8 @@
 
         <button type="submit" class="edit-button">Register</button>
 
-
-        <?php if (isset($_SESSION['message'])) : ?>
-            <p><?php echo $_SESSION['message']; ?>
-                <?php unset($_SESSION['message']) ?></p>
+        <?php if (isset($message)) : ?>
+            <p><?php echo $message ?></p>
         <?php endif; ?>
 
     </form>

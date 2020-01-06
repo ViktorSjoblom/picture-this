@@ -4,7 +4,10 @@
     <?php $id = (int) $_SESSION['user']['id']; ?>
     <?php $usersPosts = getPostsByUser($id, $pdo); ?>
 
-    <?php require __DIR__ . '/views/message.php'; ?>
+    <?php if (isset($message)) : ?>
+        <p><?php echo $message ?></p>
+    <?php endif; ?>
+
     <section class="">
         <div class="profile-userpage">
             <div class="profile-user">

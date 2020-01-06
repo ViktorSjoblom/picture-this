@@ -39,8 +39,11 @@ if (isLoggedIn() && isset($_POST['confirm-password'])) {
             $statement->bindParam(':username', $username, PDO::PARAM_STR);
             $statement->execute();
             $usernamesDB = $statement->fetch(PDO::FETCH_ASSOC);
+
+
             if ($username == $usernamesDB['username']) {
-                $_SESSION['message'] = 'Sorry, this user already exists';
+
+                $_SESSION['message'] = 'Sorry, this username already exists. Try another one!';
             } else {
                 $changedUsername = trim(filter_var($username, FILTER_SANITIZE_STRING));
                 $statement = $pdo->prepare('UPDATE users SET username = :username WHERE id = :id');

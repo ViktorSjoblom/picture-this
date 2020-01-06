@@ -22,12 +22,23 @@ if (!function_exists('redirect')) {
  * @param  string   $email []
  * @return array     [Array of userdata]
  */
-function emailExists(string $email, object $pdo): array
+function emailExists(string $email, object $pdo): bool
 {
-    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+    $statement = $pdo->prepare('SELECT email FROM users WHERE email = :email');
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user['email'] == $email) {
+        $_SESSION['message'] = "That email is already in use";
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -35,12 +46,23 @@ function emailExists(string $email, object $pdo): array
  * @param  string   $username []
  * @return array     [Array of userdata]
  */
-function usernameExists(string $username, object $pdo): array
+function usernameExists(string $username, object $pdo): bool
 {
-    $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+    $statement = $pdo->prepare('SELECT username FROM users WHERE username = :username');
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user['username'] == $username) {
+        $_SESSION['message'] = "That username is already in use.";
+        return true;
+    }
+    return false;
 }
 
 /**

@@ -1,6 +1,10 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <div class="settings-container">
 
+    <?php if (isset($message)) : ?>
+        <p><?php echo $message ?></p>
+    <?php endif; ?>
+
     <div class="profile-profilepicture">
         <img src="<?= '/app/users/profilepicture/' . $_SESSION['user']['profilepicture'] ?>" alt="">
     </div>
@@ -59,7 +63,15 @@
             <button class="btn-primary" type="submit" name="button">Save</button>
         </div>
 
+
         <?php unset($_SESSION['message']); ?>
     </form>
+
+    <form action="/app/users/delete.php" method="get" enctype="multipart/form-data">
+
+        <button type="submit" name="delete-account" value="<?php echo $_SESSION['user']['id'] ?>">Delete</button>
+
+    </form>
+
 </div>
 <?php require __DIR__ . '/views/footer.php'; ?>

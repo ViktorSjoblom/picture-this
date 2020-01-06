@@ -21,6 +21,10 @@
             </div>
         </form>
 
+        <?php if (isset($message)) : ?>
+            <p><?php echo $message ?></p>
+        <?php endif; ?>
+
         <p>Don't have an account? Create one <a class="create-account-here" href="/register.php">here!</a></p>
 
     </article>

@@ -7,7 +7,6 @@ require __DIR__ . '/views/header.php';
 
     <h2>Upload post</h2>
 
-    <?php require __DIR__ . '/views/message.php'; ?>
 
     <div class="upload-container">
         <form class="upload-post-group" action="/app/posts/store.php" method="post" enctype="multipart/form-data">

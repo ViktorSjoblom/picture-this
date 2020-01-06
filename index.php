@@ -13,6 +13,10 @@
     </div>
 <?php endif; ?>
 
+<?php if (isset($message)) : ?>
+    <p><?php echo $message ?></p>
+<?php endif; ?>
+
 <?php if (isLoggedIn()) : ?>
     <?php $allPosts = getPosts($pdo); ?>
     <?php foreach ($allPosts as $posts) : ?>
