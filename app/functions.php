@@ -160,6 +160,19 @@ function countLikes(int $postId, object $pdo): string
     return $likes["COUNT(*)"];
 }
 
+
+
+
+/**
+ * Get content from a specific user
+ * 
+ * @param int $id
+ * 
+ * @param object $pdo
+ * 
+ * @return string
+ */
+
 function getUserContent(object $pdo, int $id)
 {
     $statement = $pdo->prepare("SELECT posts.id,
