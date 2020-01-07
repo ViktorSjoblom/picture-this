@@ -159,3 +159,30 @@ function countLikes(int $postId, object $pdo): string
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
     return $likes["COUNT(*)"];
 }
+
+function getUserContent(object $pdo, int $id)
+{
+    $statement = $pdo->prepare("SELECT posts.id,
+posts.image,
+users.id AS user_id,
+users.username,
+users.name,
+users.biography,
+users.profilepicture,
+posts.description,
+posts.created_at
+FROM users
+LEFT JOIN posts ON users.id = posts.user_id
+WHERE users.id = :id");
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo));
+    }
+
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $user;
+}

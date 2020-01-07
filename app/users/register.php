@@ -62,6 +62,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         $_SESSION['message'] = "You've created an new account!";
+        redirect('/login.php');
     }
 };
 

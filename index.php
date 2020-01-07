@@ -38,7 +38,12 @@
                 </form> <!-- like-form -->
             </div> <!-- like -->
 
-            <p class="username-post">Posted by: <?= $posts['username']; ?></p>
+            <form action="/user.php" method="get">
+                <button type="submit" name="id" value="<?php echo $posts['user_id'] ?>">
+                    <?php echo $posts['username']; ?></button>
+            </form>
+
+
             <p class="post-date">Date:
                 <?php $date = explode(" ", $posts['created_at']); ?>
                 <?php echo $date[0]; ?></p>
