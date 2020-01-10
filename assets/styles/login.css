@@ -1,14 +1,12 @@
-.login-container {
-  display: flex;
-  padding: 2rem;
-  flex-direction: column;
-  align-items: center;
+.create-account-here {
+  border-bottom: 2px solid red;
 }
 
-.login-register {
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0.5rem;
-  border: 3px solid black;
-  margin-bottom: 1rem;
 }
 
 .login-text {
@@ -18,8 +16,13 @@
 .login-button {
   display: flex;
   justify-content: center;
+  padding-bottom: 0.5rem;
 }
 
-.create-account-here {
-  border-bottom: 2px solid red;
+.form-control {
+  padding: 0.3rem;
+}
+
+.small-text {
+  padding: 0.3rem 0 0 0;
 }

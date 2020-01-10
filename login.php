@@ -8,16 +8,16 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
-                <small class="form-text text-muted">Please provide your email address.</small>
+                <small class="small-text">Please provide your email address.</small>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
                 <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
-                <small class="form-text text-muted">Please provide your password.</small>
+                <small class="small-text">Please provide your password.</small>
             </div>
             <div class="login-button">
-                <button type="submit" class="login-button">Login</button>
+                <button target=" _blank" rel="nofollow noopener" type="submit" class="primary-button">Login</button>
             </div>
         </form>
 

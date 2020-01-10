@@ -4,7 +4,7 @@
     </li>
     <li class="nav-item">
         <?php if (isset($_SESSION['user'])) : ?>
-            <a class="nav-link" href="/app/users/logout.php">Logout</a>
+            <a class="nav-link" href="/app/users/logout.php"><i class="fas fa-sign-out-alt"></i></a>
         <?php endif; ?>
     </li>
 </ul>

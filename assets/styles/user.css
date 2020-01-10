@@ -1,0 +1,37 @@
+.user-userpage {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-username {
+  padding: 0.5rem 0 1rem 0;
+}
+
+.user-username p {
+  border-bottom: 2px solid black;
+}
+
+.post-likes {
+  font-size: 1.5rem;
+}
+
+.user-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.user-likes {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 0.3rem;
+}
+
+.user-container {
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

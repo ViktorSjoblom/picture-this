@@ -107,7 +107,7 @@ function getPostsByUser(int $id, object $pdo): array
  */
 function getPosts(object $pdo): array
 {
-    $statement = $pdo->prepare('SELECT posts.id, posts.image, users.id
+    $statement = $pdo->prepare('SELECT posts.id, posts.image, users.profilepicture, users.id
      as user_id, users.username, posts.description, posts.created_at, posts.updated_at
      FROM posts
      JOIN users ON posts.user_id = users.id

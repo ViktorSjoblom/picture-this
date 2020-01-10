@@ -4,12 +4,20 @@ a {
 }
 
 a:hover {
-  color: hotpink;
+  color: black;
 }
 
-.form-group {
+.form-control {
+  border: 1px solid black;
+}
+
+.form-group,
+.form-group-email,
+.form-group-password {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
 .btn-primary {
@@ -17,8 +25,10 @@ a:hover {
 }
 
 [type="text"],
-[type="password"] {
-  width: 300px;
+[type="password"],
+[type="email"] {
+  width: 250px;
+  text-align: center;
 }
 
 .delete-button {
@@ -29,4 +39,47 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.biography-area {
+  padding-top: 0.5rem;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.profilepicture-input {
+  border: 1px solid black;
+  padding: 0.3rem;
+}
+
+.biography-area::placeholder {
+  padding: 0 0 0 1rem;
+}
+
+.form-delete {
+  padding-bottom: 6rem;
+}
+
+.profile-profilepicture {
+  padding-top: 1rem;
+}
+
+.delete-style {
+  background: linear-gradient(to bottom, #cb356b, #bd3f32);
+  color: rgb(0, 0, 0);
+}
+
+label[for="name"],
+[for="profilepicture"],
+[for="biography"],
+[for="username"],
+[for="password"],
+[for="password-confirm"],
+[for="email"] {
+  padding: 0.5rem 0 0.2rem 0;
+}
+
+.current-settings {
+  font-size: 12px;
+  padding-bottom: 0.3rem;
 }

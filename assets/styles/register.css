@@ -1,5 +1,28 @@
-.edit-section {
+.register-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.register-headline {
+  padding-bottom: 0.5rem;
+}
+
+.register-button {
+  padding-bottom: 0.5rem;
+}
+
+.edit-input {
+  border: 1px solid black;
+  padding: 0.3rem;
+}
+
+.edit-div {
+  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+}
+
+.edit-label {
+  padding: 0 0 0.2rem 0;
 }

@@ -3,7 +3,7 @@
 const [...likeForms] = document.querySelectorAll(".like-form");
 const [...likeButtons] = document.querySelectorAll(".like-button");
 
-// when clicking on like, sends data to likes table in database,
+// when clicking on the heart, sends data to likes table in database,
 // changing the value of function isLikedByUser
 likeForms.forEach(likeForm => {
   likeForm.addEventListener("submit", event => {

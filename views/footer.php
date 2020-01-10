@@ -4,9 +4,9 @@
 
     <footer>
         <div class="footer-container">
-            <a class="footer-link" href="/index.php">Index</a>
-            <a class="footer-link" href="/upload.php">Upload</a>
-            <a class="footer-link" href="./profile.php">Profile</a>
+            <a class="footer-link" href="/index.php"><i class="fas fa-home"></i></a>
+            <a class="footer-link" href="/upload.php"><i class="fas fa-upload"></i></a>
+            <a class="footer-link" href="./profile.php"><i class="fas fa-user"></i></a>
         </div>
     </footer>
 
