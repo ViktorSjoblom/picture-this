@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
                             <i class="fas fa-heart like-button-<?= $posts['id'] ?> like-button-heart liked <?= $isLikedByUser ? '' : 'hidden' ?>"></i>
                         </button>
                     </form>
-                </div>
+                </div> <!-- likes  -->
 
                 <div class="user-description">
                     <p><?php echo $posts['description'] ?></p>
