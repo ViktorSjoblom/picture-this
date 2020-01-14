@@ -58,10 +58,10 @@ if (isLoggedIn() && isset($_POST['confirm-password'])) {
                 $_SESSION['user']['username'] = $username;
             }
         }
-        $_SESSION['message'] = 'Your settings has been updated';
+        $_SESSION['message'] = 'Your settings has been updated.';
         redirect('/../profile.php');
     } else {
-        $_SESSION['message'] = 'Incorrect password';
+        $_SESSION['message'] = 'Incorrect password. Try again!';
     }
 }
 redirect('/../settings.php');

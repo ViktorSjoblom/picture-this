@@ -1,10 +1,10 @@
-.uploaded-pictures {
-  max-width: 300px;
-}
-
 .mini-profilepicture {
   max-width: 30px;
   border-radius: 50%;
+}
+
+.user-container {
+  padding-top: 0.5rem;
 }
 
 .index-intro {
@@ -22,14 +22,16 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 1rem 0 5rem 0;
+  padding: 0 0 5rem 0;
 }
 
 .feed-description {
   display: flex;
   justify-content: center;
   font-size: 10px;
-  padding: 0 0 0 0.3rem;
+  padding: 0 0 0.3rem 0.3rem;
+  border-bottom: 1px solid black;
+  max-width: 300px;
 }
 
 .liked {
@@ -60,4 +62,55 @@
 .like-button {
   border: none;
   background-color: unset;
+  padding-top: 0.2rem;
+}
+
+.uploaded-pictures {
+  max-width: 300px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .index-posts {
+    width: 800px;
+  }
+
+  .like-button {
+    padding-top: 0rem;
+  }
+
+  .fa-heart {
+    font-size: 35px;
+  }
+
+  .uploaded-pictures {
+    min-width: 650px;
+  }
+
+  .feed-description {
+    min-width: 650px;
+    align-content: center;
+    max-width: 800px;
+  }
+
+  .mini-profilepicture,
+  .like {
+    max-width: 100px;
+  }
+
+  .username-text,
+  .post-date,
+  .feed-description {
+    font-size: 20px;
+  }
+
+  .index-flex {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-container {
+    padding: 1rem 0rem;
+  }
 }

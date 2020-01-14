@@ -5,7 +5,7 @@
     <?php $usersPosts = getPostsByUser($id, $pdo); ?>
 
     <?php if (isset($message)) : ?>
-        <p><?php echo $message ?></p>
+        <p class="default-error"><?php echo $message ?></p>
     <?php endif; ?>
 
     <section>
@@ -21,6 +21,7 @@
 
             <div class="profile-biography">
                 <?php echo $_SESSION['user']['biography']; ?>
+
             </div>
 
         </div>
@@ -35,14 +36,8 @@
             <?php foreach ($usersPosts as $posts) : ?>
                 <div class="profile-posts">
 
-                    <form action="./../app/posts/update.php" method="post" enctype="multipart/form-data" class="description-form">
-                        <label for="description" class="description-flex">Change description</label>
-                        <input type="text" name="description" placeholder="<?php echo $posts['description']; ?>" value="<?php echo $posts['description']; ?>">
-                        <input type="hidden" name="page" value="<?php echo '/profile.php'; ?>">
-                        <button type="submit" name="id" value="<?php echo $posts['id']; ?>">Update</button>
-                    </form>
 
-                    <img class="uploaded-pictures" src="<?php echo 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
+                    <img class="profile-pictures" src="<?php echo 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
                     <p class="post-date">
                         <?php $date = explode(" ", $posts['created_at']); ?>
                         <?php echo $date[0]; ?></p>
@@ -50,9 +45,16 @@
                         <p><?php echo $posts['description'] ?></p>
                     </div>
 
+                    <form action="./../app/posts/update.php" method="post" enctype="multipart/form-data" class="description-form">
+                        <label for="description" class="description-flex">Change description</label>
+                        <input type="text" name="description" placeholder="<?php echo $posts['description']; ?>" value="<?php echo $posts['description']; ?>">
+                        <input type="hidden" name="page" value="<?php echo '/profile.php'; ?>">
+                        <button type="submit" name="id" value="<?php echo $posts['id']; ?>">Update</button>
+                    </form>
+
                     <form action="./../app/posts/delete.php" method="get" enctype="multipart/form-data" class="delete-form">
                         <input type="hidden" name="page" value="<?php echo '/profile.php'; ?>">
-                        <button class="delete-post-button" type="submit" name="delete" value="<?php echo $posts['id']; ?>">Delete</button>
+                        <button class="delete-post-button" type="submit" name="delete" value="<?php echo $posts['id']; ?>">Delete Post</button>
                     </form>
                 </div>
             <?php endforeach; ?>

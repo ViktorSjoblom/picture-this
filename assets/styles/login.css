@@ -2,6 +2,10 @@
   border-bottom: 2px solid red;
 }
 
+.create-account-here:hover {
+  color: #79cfba;
+}
+
 .login-container {
   display: flex;
   flex-direction: column;

@@ -44,7 +44,7 @@
                 <button type="submit" class="primary-button register-button">Register</button>
             </div>
             <?php if (isset($message)) : ?>
-                <p><?php echo $message ?></p>
+                <p class="default-error"><?php echo $message ?></p>
             <?php endif; ?>
 
         </form>

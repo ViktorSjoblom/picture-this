@@ -8,7 +8,7 @@ require __DIR__ . '/../autoload.php';
 if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['password-repeat'])) {
 
     if ($_POST['password'] !== $_POST['password-repeat']) {
-        $_SESSION['message'] = "Your passwords do not match, please try again!";
+        $_SESSION['message'] = "Your passwords do not match.";
         redirect('/register.php');
     }
 
@@ -61,7 +61,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'
 
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        $_SESSION['message'] = "You've created an new account!";
+        $_SESSION['message'] = "You've created a new account!";
         redirect('/login.php');
     }
 };

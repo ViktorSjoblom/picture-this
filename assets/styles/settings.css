@@ -42,7 +42,8 @@ a:hover {
 }
 
 .biography-area {
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
+  text-align: center;
   height: 50px;
   border: 1px solid black;
 }

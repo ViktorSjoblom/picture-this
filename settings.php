@@ -2,7 +2,7 @@
 <div class="settings-container">
 
     <?php if (isset($message)) : ?>
-        <p><?php echo $message ?></p>
+        <p class="default-error"><?php echo $message ?></p>
     <?php endif; ?>
 
     <div class="profile-profilepicture">

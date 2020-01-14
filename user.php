@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <?php if (isset($message)) : ?>
-    <p><?php echo $message ?></p>
+    <p class="default-error"><?php echo $message ?></p>
 <?php endif; ?>
 
 
@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
             <img src="<?= '/app/users/profilepicture/' . $getUserContent['profilepicture'] ?>" alt="">
         </div>
 
-        <div class="profile-biography">
+        <div class="user-biography">
             <?php echo $getUserContent['biography']; ?>
         </div>
 
@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
 
 
         <div class="user-wrapper">
-            <div class="user-container">
+            <div class="user-box">
                 <p class="post-date">Uploaded:
                     <?php $date = explode(" ", $posts['created_at']); ?>
                     <?php echo $date[0]; ?></p>
@@ -60,7 +60,7 @@ if (isset($_GET['id'])) {
                     </form>
                 </div>
 
-                <div class="description">
+                <div class="user-description">
                     <p><?php echo $posts['description'] ?></p>
                 </div>
             </div>

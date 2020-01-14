@@ -1,11 +1,11 @@
 .profile-user {
-  padding: 0.5rem 0.5rem 0.5rem 3rem;
+  padding: 0.5rem 0.5rem 0rem 3.5rem;
 }
 
 .profile-container {
   display: flex;
   flex-direction: row;
-  padding: 0.3rem;
+  padding: 0rem 0.3rem 0.3rem 0.3rem;
 }
 
 .profile-biography {
@@ -35,7 +35,7 @@
 }
 
 .edit-profile a:hover {
-  color: hotpink;
+  color: #79cfba;
 }
 
 .profile-profilepicture img {
@@ -79,15 +79,14 @@
 
 .post-date {
   font-size: 8px;
-  padding: 0.3rem 0 0 0.3rem;
 }
 
 .description {
   max-width: 150px;
   font-size: 10px;
-  max-height: 50px;
+  height: 50px;
   overflow: scroll;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.3rem;
 }
 
 .delete-post-button {
@@ -100,4 +99,31 @@
   align-items: center;
   border: 1px solid black;
   margin: 2px;
+}
+
+.profile-pictures {
+  max-width: 300px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .profile-posts img {
+    width: 270px;
+    height: 200px;
+  }
+
+  .description {
+    min-height: 100px;
+  }
+
+  .profile-biography {
+    margin-left: 22rem;
+  }
+
+  .profile-user {
+    padding-left: 2.5rem;
+  }
+
+  label[for="description"] {
+    font-size: 20px;
+  }
 }

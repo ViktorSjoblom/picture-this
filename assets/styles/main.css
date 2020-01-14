@@ -10,10 +10,6 @@
   --input-color: #b39bc8;
   --bb-color: #ff0000;
   --txt-color: rgb(0, 0, 0);
-  --btn-color: #050505;
-  --btn-text: #f0ebf4;
-  --delete-btn: rgb(215, 64, 64);
-  --cancel-btn: rgb(101, 199, 89);
 }
 
 .primary-button {
@@ -39,4 +35,27 @@
 .primary-button:active {
   position: relative;
   top: 1px;
+}
+
+.default-error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 1rem 0;
+}
+
+.default-message {
+  color: green;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1024px) {
+  * {
+    font-size: 20px;
+  }
+
+  button {
+    border: none;
+  }
 }

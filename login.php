@@ -16,14 +16,17 @@
                 <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
                 <small class="small-text">Please provide your password.</small>
             </div>
+
+            <?php if (isset($message)) : ?>
+                <p class="default-error"><?php echo $message ?></p>
+            <?php endif; ?>
+
             <div class="login-button">
                 <button target=" _blank" rel="nofollow noopener" type="submit" class="primary-button">Login</button>
             </div>
         </form>
 
-        <?php if (isset($message)) : ?>
-            <p><?php echo $message ?></p>
-        <?php endif; ?>
+
 
         <p>Don't have an account? Create one <a class="create-account-here" href="/register.php">here!</a></p>
 

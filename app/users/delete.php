@@ -10,6 +10,7 @@ if (isLoggedIn() && isset($_GET['delete-account'])) {
     $statement = $pdo->prepare(
         "DELETE FROM users WHERE id = :id"
     );
+
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }

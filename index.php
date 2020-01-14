@@ -6,7 +6,7 @@ $allPosts = getPosts($pdo); ?>
     <div class="login-container">
 
         <?php if (isset($message)) : ?>
-            <p><?php echo $message ?></p>
+            <p class="default-error"><?php echo $message ?></p>
         <?php endif; ?>
 
         <?php if (!isLoggedIn()) : ?>
@@ -28,15 +28,16 @@ $allPosts = getPosts($pdo); ?>
                         <form action="/user.php" method="get">
                             <button class="user-button" type="submit" name="id" value="<?php echo $posts['user_id'] ?>">
                                 <img class="mini-profilepicture" src="<?= '/app/users/profilepicture/' . $posts['profilepicture'] ?>" alt="">
-                                <p><?php echo $posts['username']; ?></p>
+                                <p class="username-text"><?php echo $posts['username']; ?></p>
                             </button>
                         </form>
+                        <p class="post-date">
+                            <?php $date = explode(" ", $posts['created_at']); ?>
+                            <?php echo $date[0]; ?></p>
                     </div>
-                    <p class="post-date">Uploaded:
-                        <?php $date = explode(" ", $posts['created_at']); ?>
-                        <?php echo $date[0]; ?></p>
-                    <img class="uploaded-pictures" src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
-
+                    <div class="index-flex">
+                        <img class="uploaded-pictures" src="<?= 'app/posts/uploads/' . $posts['user_id'] . '/' . $posts['image'] ?>" alt="">
+                    </div>
                     <div data-id="<?= $posts['id'] ?>" class="like">
                         <p class="post-likes likes-post<?= $posts['id']; ?>"><?= $likes ?></p>
                         <form class="like-form" method="post">

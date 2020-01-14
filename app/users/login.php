@@ -18,12 +18,12 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     // If we couldn't find the user in the database, redirect back to the login page.
     if (!$user) {
-        $_SESSION['message'] = "That email doesnt exist. Try again!";
+        $_SESSION['message'] = "That email doesn't exist. Try again!";
         redirect('/login.php');
     }
 
     if (!password_verify($_POST['password'], $user['password'])) {
-        $_SESSION['message']  = "Incorrect password! Try again.";
+        $_SESSION['message']  = "Incorrect password. Try again!";
         redirect('/login.php');
     }
 

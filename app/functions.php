@@ -35,7 +35,7 @@ function emailExists(string $email, object $pdo): bool
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($user['email'] == $email) {
-        $_SESSION['message'] = "That email is already in use";
+        $_SESSION['message'] = "That email is already in use.";
         return true;
     }
     return false;
@@ -117,7 +117,6 @@ function getPosts(object $pdo): array
     return $allPosts;
 }
 
-
 /**
  * Checks if given post is liked by given user
  *
@@ -159,9 +158,6 @@ function countLikes(int $postId, object $pdo): string
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
     return $likes["COUNT(*)"];
 }
-
-
-
 
 /**
  * Get content from a specific user

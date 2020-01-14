@@ -4,6 +4,21 @@
   flex-direction: column;
 }
 
+.user-description {
+  overflow: scroll;
+  padding: 0.5rem 0.3rem;
+  max-width: 300px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.user-biography {
+  padding: 0.5rem 0.5rem;
+  align-self: center;
+  overflow: scroll;
+  max-width: 300px;
+}
+
 .user-username {
   padding: 0.5rem 0 1rem 0;
 }
@@ -20,7 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
 }
 
 .user-likes {
@@ -29,9 +44,20 @@
   padding-top: 0.3rem;
 }
 
-.user-container {
+.user-box {
   border-bottom: 2px solid black;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+@media only screen and (min-width: 1024px) {
+  .user-box {
+    width: 650px;
+  }
+
+  .user-description {
+    max-width: 650px;
+    min-width: 650px;
+  }
 }
