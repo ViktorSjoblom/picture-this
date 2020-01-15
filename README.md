@@ -55,7 +55,7 @@ php -S localhost:8000
 
 ## Testers
 
-* person 1
+* Andereas Pandzic
 * person 2
 
 ## Code Review
