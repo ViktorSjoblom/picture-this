@@ -66,6 +66,7 @@ php -S localhost:8000
 1. There is a lot of folders some with repeating picture can be good to clean up if they aren't in use. in folder post/uploads
 
 2. the interface for updating user information is a bit confusing, still nice with so many options but it doesn't seem like it wants to update profile picture.
+
 3. you make good use of @param in functions which makes it easy to understand what your functions do.
 
 4. on functions.php 169 it says "@return string" and you are missing that ":string" on line 172.
