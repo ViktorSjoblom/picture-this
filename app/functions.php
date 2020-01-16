@@ -195,3 +195,26 @@ WHERE users.id = :id");
 
     return $user;
 }
+
+if (!function_exists('getSearchResult')) {
+    /**
+     * Undocumented function
+     *
+     * @param string $search
+     * @param PDO $pdo
+     * @return array
+     */
+    function getSearchResult($search, $pdo)
+    {
+        $search = filter_var($_GET['search'], FILTER_SANITIZE_STRING);
+        $statement = $pdo->prepare('SELECT id, username, profilepicture, biography FROM users WHERE username LIKE :search OR name LIKE :search');
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+        $search = '%' . $search . '%';
+        $statement->bindParam(':search', $search, PDO::PARAM_STR);
+        $statement->execute();
+        $searchresults = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $searchresults;
+    }
+}
