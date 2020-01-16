@@ -53,6 +53,14 @@ $allPosts = getPosts($pdo); ?>
                     <div class="feed-description">
                         <p><?= $posts['description'] ?></p>
                     </div>
+                    <form action="/app/posts/comment.php" method="post">
+                        <fieldset>
+                            <input type="hidden" name="postid" value="<?= $posts['id'] ?>">
+                            <input type="hidden" name="userid" value="<?= $posts['user_id'] ?>">
+                            <textarea name="comment" cols="78" rows="2" placeholder="Comment"></textarea>
+                            <button type="comment-submit">Send</button>
+                        </fieldset>
+                    </form>
                 <?php endforeach; ?>
         </div>
 
