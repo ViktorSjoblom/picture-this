@@ -110,13 +110,32 @@ function getPosts(object $pdo): array
     $statement = $pdo->prepare('SELECT posts.id, posts.image, users.profilepicture, users.id
      as user_id, users.username, posts.description, posts.created_at, posts.updated_at
      FROM posts
-     JOIN users ON posts.user_id = users.id
+     INNER JOIN users ON posts.user_id = users.id
      ORDER BY created_at DESC');
     $statement->execute();
     $allPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $allPosts;
 }
 
+if (!function_exists('getPostComments')) {
+    /**
+     * Fetches the posts in the database
+     *
+     * @param int $postId
+     * @return array
+     */
+    function getPostComments(int $postId, object $pdo): array
+    {
+        $statement = $pdo->prepare('SELECT id, user_id, post_id, content, date
+                FROM comments
+                WHERE post_id = :post_id
+                ORDER BY date DESC');
+        $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+        $statement->execute();
+        $postComments = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $postComments;
+    }
+}
 /**
  * Checks if given post is liked by given user
  *
