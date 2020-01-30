@@ -1,6 +1,7 @@
 <?php require __DIR__ . '/views/header.php';
 
-$allPosts = getPosts($pdo); ?>
+$allPosts = getPosts($pdo);
+?>
 
 <article>
     <div class="login-container">
@@ -54,19 +55,40 @@ $allPosts = getPosts($pdo); ?>
                         <p><?= $posts['description'] ?></p>
                     </div>
                     <form action="/app/posts/comment.php" method="post">
-                        <fieldset>
-                            <input type="hidden" name="postid" value="<?= $posts['id'] ?>">
-                            <input type="hidden" name="userid" value="<?= $posts['user_id'] ?>">
-                            <textarea name="comment" cols="78" rows="2" placeholder="Comment"></textarea>
-                            <button type="comment-submit">Send</button>
-                        </fieldset>
+
+                        <input type="hidden" name="postid" value="<?= $posts['id'] ?>">
+                        <input type="hidden" name="userid" value="<?= $posts['user_id'] ?>">
+                        <textarea name="comment" cols="78" rows="2" placeholder="Comment"></textarea>
+                        <button type="comment-submit">Send</button>
+
                     </form>
+                    <!-- Comments -->
+                    <?php $postComments = getPostComments($posts['id'], $pdo); ?>
+                    <?php foreach ($postComments as $comment) : ?>
+                        <br>
+                        <hr>
+                        <br>
+                        <pre>
+                            <?php echo $comment["content"]; ?>
+                            <?php if ($userId === $comment["user_id"]) : ?>
+                                <form action="/app/posts/update-comment.php" method="post">
+          
+                            <input type="hidden" name="comment_id" value="<?= $comment["id"]; ?>">
+                            <input type="hidden" name="user_id" value="<?= $comment["user_id"]; ?>">
+                            <textarea name="comment" cols="78" rows="2" placeholder="<?php echo $comment["content"]; ?>"></textarea>
+                            <button type="comment-submit">Edit comment</button>
+                        
+                    </form>
+                    <form action="/app/posts/delete-comment.php" method="post"> 
+                    <input type="hidden" name="comment_id" value="<?= $comment["id"]; ?>">
+                    <input type="hidden" name="user_id" value="<?= $comment["user_id"]; ?>">
+                            <button type="comment-submit">Delete comment</button>
+                    </form>
+                            <?php endif; ?>
+                    </pre>
+                        <br>
+                    <?php endforeach; ?>
                 <?php endforeach; ?>
         </div>
-
 </article>
-
-<?php endif; ?>
-
-
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php endif; ?> <?php require __DIR__ . '/views/footer.php'; ?>
