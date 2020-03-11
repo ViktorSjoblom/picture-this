@@ -36,7 +36,7 @@ if (isLoggedIn() && isset($_POST['current-email'], $_POST['new-email'], $_POST['
             $_SESSION['message'] = "Your email has been changed!";
 
             $_SESSION['user']['email'] = $newEmail;
-            // If new emails don't match, die page and echo something
+        // If new emails don't match, die page and echo something
         } else {
             $_SESSION['message'] = "New emails don't match!";
         }

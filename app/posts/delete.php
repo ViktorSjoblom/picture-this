@@ -6,13 +6,12 @@ require __DIR__ . '/../autoload.php';
 
 // $_POST['user_id'] must be equal to global variable $userId which is the logged in user.
 if (isset($_POST['comment_id'], $_POST['user_id'], $_POST['comment']) && $_POST['user_id'] === $userId) {
-
     if (isLoggedIn() && isset($_POST['comment'])) {
         $commentId = trim(filter_var($_POST['comment_id'], FILTER_SANITIZE_NUMBER_INT));
         $comment = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
         $date = date("Y-m-d H:i:s");
 
-        // update sanitized comment 
+        // update sanitized comment
         $statement = $pdo->prepare("UPDATE comments SET content = :content, date = :date WHERE id = :id");
 
         if (!$statement) {

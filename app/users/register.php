@@ -6,7 +6,6 @@ require __DIR__ . '/../autoload.php';
 
 
 if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['password-repeat'])) {
-
     if ($_POST['password'] !== $_POST['password-repeat']) {
         $_SESSION['message'] = "Your passwords do not match.";
         redirect('/register.php');
@@ -38,7 +37,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['username'], $_POST['password'
 
 
     if (!emailExists($email, $pdo) && (!usernameExists($username, $pdo))) {
-
         $profilePicture = 'default-profilepicture.png';
         $defaultBio = 'Nothing here yet...';
 

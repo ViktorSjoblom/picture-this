@@ -4,7 +4,6 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (isLoggedIn() && isset($_POST['confirm-password'])) {
-
     $password = trim($_POST['confirm-password']);
     $id = (int) $_SESSION['user']['id'];
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
@@ -13,7 +12,6 @@ if (isLoggedIn() && isset($_POST['confirm-password'])) {
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if (password_verify($password, $user['password'])) {
-
         if ($_POST['biography'] == "") {
             $biography = $_SESSION['user']['biography'];
         } else {
@@ -39,7 +37,6 @@ if (isLoggedIn() && isset($_POST['confirm-password'])) {
         if ($_POST['username'] == "") {
             $username = $_SESSION['user']['username'];
         } elseif (isset($_POST['username'])) {
-
             $username = $_POST['username'];
             $statement = $pdo->prepare('SELECT username FROM users WHERE username = :username');
             $statement->bindParam(':username', $username, PDO::PARAM_STR);
@@ -47,7 +44,6 @@ if (isLoggedIn() && isset($_POST['confirm-password'])) {
             $usernamesDB = $statement->fetch(PDO::FETCH_ASSOC);
 
             if ($username == $usernamesDB['username']) {
-
                 $_SESSION['message'] = 'Sorry, this username already exists. Try another one!';
             } else {
                 $changedUsername = trim(filter_var($username, FILTER_SANITIZE_STRING));

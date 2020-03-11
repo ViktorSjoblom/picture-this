@@ -70,7 +70,7 @@ $allPosts = getPosts($pdo);
                         <br>
                         <pre>
                             <?php echo $comment["content"]; ?>
-                            <?php if ($userId === $comment["user_id"]) : ?>
+                            <?php if ($_SESSION['user']["id"] === $comment["user_id"]) : ?>
                                 <form action="/app/posts/update-comment.php" method="post">
           
                             <input type="hidden" name="comment_id" value="<?= $comment["id"]; ?>">
