@@ -1,6 +1,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
-<?php if (!isLoggedIn())
+<?php if (!isLoggedIn()) {
     redirect('index.php');
+}
 ?>
 <?php
 if (isset($_GET['search'])) : {
@@ -13,8 +14,8 @@ if (isset($_GET['search'])) : {
         <h1>Search results</h1>
         <h3>
             <?php if (empty($searchresults)) {
-                echo "Not results where found for $search";
-            }
+    echo "Not results where found for $search";
+}
             ?>
         </h3>
         <?php foreach ($searchresults as $searchresult) : ?>

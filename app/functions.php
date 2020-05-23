@@ -180,11 +180,11 @@ function countLikes(int $postId, object $pdo): string
 
 /**
  * Get content from a specific user
- * 
+ *
  * @param int $id
- * 
+ *
  * @param object $pdo
- * 
+ *
  * @return string
  */
 
